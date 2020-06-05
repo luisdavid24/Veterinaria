@@ -9,6 +9,6 @@ const requestHandler=require('./request-handler');
 const enrutador=require('./enrutador');
 
 const server = http.createServer(requestHandler);
-server.listen(6000,()=>{
-    console.log("El servidor esta trabajando en el puesto 6000");
+server.listen(5000,()=>{
+    console.log("El servidor esta trabajando en el puesto 5000");
 });
