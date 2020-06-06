@@ -89,7 +89,7 @@ function eliminar(index){
 listarMascotas();
 
 function solicitarMascotas(){
-    fetch('http://localhost:5000/mascotas',{mode:"cors"})
+    fetch('http://localhost:5000/mascotas',{mode:'cors'})
     .then((respuesta)=>{
         if(respuesta.ok) {
             return respuesta.join();
@@ -97,7 +97,7 @@ function solicitarMascotas(){
     }).then(mascotasDelServer=>{
         console.log({mascotasDelServer});
     });
-}
+} 
 
 form.onsubmit=enviarDatos;
 btnGuardar.onclick=enviarDatos;

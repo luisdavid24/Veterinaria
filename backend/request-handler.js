@@ -15,6 +15,8 @@ module.exports=(req, res) => {
     const rutaLimpia=ruta.replace(/^\/+|\/+$/g, '');
     //3.1 obtener el metodo http
     const metodo=req.method.toLowerCase();
+    
+    if(metodo==='options')
     //3.2 obtener variables de query url
     const {query={}}=urlParseada;
    
