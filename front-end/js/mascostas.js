@@ -92,7 +92,7 @@ function solicitarMascotas(){
     fetch('http://localhost:5000/mascotas',{mode:'cors'})
     .then((respuesta)=>{
         if(respuesta.ok) {
-            return respuesta.join();
+            return respuesta.json();
         }
     }).then(mascotasDelServer=>{
         console.log({mascotasDelServer});
