@@ -5,25 +5,16 @@ const indice=document.getElementById("indice");
 const dueno=document.getElementById("dueno");
 const form=document.getElementById("form");
 const btnGuardar=document.getElementById("btnGuardar");
-let mascotas= [
-    {
-        tipo: "Gato", 
-        nombre: "manchas",
-        dueno: "Esteban"
-    },
-    {
-        tipo: "Perro", 
-        nombre: "Lucas",
-        dueno: "Jhon"
-    },
-    {
-        tipo: "Perro", 
-        nombre: "Javier",
-        dueno: "Edgar"
+let mascotas= [];
+async function listarMascotas(){
+    try{
+        const respuesta=await fetch('http://localhost:5000/mascotas',{mode:'cors'})
+        const mascotasDelServer=await respuesta.json();
+              
+    }catch(error){
+
     }
-];
-function listarMascotas(){
-    solicitarMascotas();
+    
     const htmlMascotas=mascotas.map((mascota,index)=>`
         <tr>
             <th scope="row">${index}</th>
@@ -88,15 +79,7 @@ function eliminar(index){
 }
 listarMascotas();
 
-function solicitarMascotas(){
-    fetch('http://localhost:5000/mascotas',{mode:'cors'})
-    .then((respuesta)=>{
-        if(respuesta.ok) {
-            return respuesta.json();
-        }
-    }).then(mascotasDelServer=>{
-        console.log({mascotasDelServer});
-    });
-} 
+ 
 
 btnGuardar.onclick=enviarDatos;
+form.onsubmit=enviarDatos;
