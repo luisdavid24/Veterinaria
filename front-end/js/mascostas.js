@@ -10,12 +10,10 @@ async function listarMascotas(){
     try{
         const respuesta=await fetch('http://localhost:5000/mascotas',{mode:'cors'})
         const mascotasDelServer=await respuesta.json();
-              
-    }catch(error){
-
-    }
-    
-    const htmlMascotas=mascotas.map((mascota,index)=>`
+        if(Array.isArray(mascotasDelServer)&& mascotasDelServer.length>0){
+            mascotas=mascotasDelServer;
+        }
+        const htmlMascotas=mascotas.map((mascota,index)=>`
         <tr>
             <th scope="row">${index}</th>
             <td>${mascota.tipo}</td>
@@ -31,6 +29,9 @@ async function listarMascotas(){
   listaMascotas.innerHTML=htmlMascotas;
   Array.from(document.getElementsByClassName("editar")).forEach((botonEditar,index)=>botonEditar.onclick=editar(index));
   Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar,index)=>botonEliminar.onclick=eliminar(index));
+    }catch(error){
+        throw error;
+    }
 }
 function enviarDatos(evento){
     evento.preventDefault();
