@@ -99,5 +99,4 @@ function solicitarMascotas(){
     });
 } 
 
-form.onsubmit=enviarDatos;
 btnGuardar.onclick=enviarDatos;
