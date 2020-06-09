@@ -42,16 +42,16 @@ async function enviarDatos(evento){
             nombre:nombre.value,
             dueno:dueno.value,
         };
-        let metodo='POST';
+        let method='POST';
         let urlEnvio=url;
         const accion=btnGuardar.innerHTML;
         if(accion==="Editar"){
-            metodo='PUT';
+            method='PUT';
             mascotas[indice.value]=datos;
             urlEnvio=`${url}/indice.value`; 
         }
         const respuesta=await fetch(urlEnvio,{
-            metodo,
+            method,
             headers:{
                 'Content-Type':'application/json',
             },
