@@ -36,29 +36,35 @@ async function listarMascotas(){
 }
 async function enviarDatos(evento){
     evento.preventDefault();
-    const datos={
-        tipo: tipo.value,
-        nombre:nombre.value,
-        dueno:dueno.value,
-    };
-    let metodo='POST';
-    let urlEnvio=url;
-    const accion=btnGuardar.innerHTML;
-    if(accion==="Editar"){
-        metodo='PUT';
-        mascotas[indice.value]=datos;
-        urlEnvio=`${url}/indice.value`; 
+    try{
+        const datos={
+            tipo: tipo.value,
+            nombre:nombre.value,
+            dueno:dueno.value,
+        };
+        let metodo='POST';
+        let urlEnvio=url;
+        const accion=btnGuardar.innerHTML;
+        if(accion==="Editar"){
+            metodo='PUT';
+            mascotas[indice.value]=datos;
+            urlEnvio=`${url}/indice.value`; 
+        }
+        const respuesta=await fetch(urlEnvio,{
+            metodo,
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify(datos),
+        })
+        if(respuesta.ok){
+            listarMascotas();
+            resetModal();
+        }
+    }catch(error){
+        throw error;
     }
-    const respuesta=await fetch(urlEnvio,{
-        metodo,
-        headers:{
-            'Content-Type':'application/json',
-        },
-        body:JSON.stringify(datos),
-    })
     
-    listarMascotas();
-    resetModal();
 }
 function editar(index){
     return function cuandoCliqueo(){
