@@ -1,14 +1,9 @@
-const http = require('http');
-const url=require('url');
-const StringDecoder= require('string_decoder').StringDecoder;
-//Aqui estamos importando el enrutador creado
-
-//importamos la request
-const requestHandler=require('./request-handler');
-
-const enrutador=require('./enrutador');
-
+const http = require("http");
+const requestHandler = require("./request-handler");
 const server = http.createServer(requestHandler);
-server.listen(5000,()=>{
-    console.log("El servidor esta trabajando en el puesto 5000");
+
+server.listen(5000, () => {
+  console.log(
+    "el servidor está escuchando peticiones en http://localhost:5000/"
+  );
 });
