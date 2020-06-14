@@ -46,7 +46,7 @@ async function listarMascotas() {
         <td colspan="5" class="lista-vacia">No hay mascotas</td>
       </tr>`;
   } catch (error) {
-    throw error;
+    $("alert").show();
   }
 }
  
