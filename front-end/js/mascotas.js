@@ -49,7 +49,7 @@ async function listarMascotas() {
     throw error;
   }
 }
-
+ 
 async function enviarDatos(evento) {
   evento.preventDefault();
   try {
