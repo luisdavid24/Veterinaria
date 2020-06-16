@@ -21,9 +21,8 @@ async function listarVeterinarias() {
       const htmlVeterinarias = veterinarias.map((veterinaria, index)=>`<tr>
           <th scope="row">${index}</th>
           <td>${veterinaria.identificacion}</td>
-          <td>${veterinaria.pais}</td>
           <td>${veterinaria.nombre}</td>
-          <td>${veterinaria.apellido}</td>
+          <td>${veterinaria.documento}</td>
           <td>
               <div class="btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-info editar"><i class="fas fa-edit"></i></button>
