@@ -20,10 +20,10 @@ async function listarVeterinarias() {
     if(veterinarias.length>0){
       const htmlVeterinarias = veterinarias.map((veterinaria, index)=>`<tr>
           <th scope="row">${index}</th>
-          <td>${veterinaria.identificacion}</td>
-          <td>${veterinaria.nombre}</td>
           <td>${veterinaria.documento}</td>
-          <td>
+          <td>${veterinaria.nombre}</td>
+          <td>${veterinaria.apellido}</td>
+          <td> 
               <div class="btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-info editar"><i class="fas fa-edit"></i></button>
                   <button type="button" class="btn btn-danger eliminar"><i class="far fa-trash-alt"></i></button>
@@ -34,7 +34,7 @@ async function listarVeterinarias() {
         Array.from(document.getElementsByClassName('editar')).forEach((botonEditar, index)=>botonEditar.onclick = editar(index));
         Array.from(document.getElementsByClassName('eliminar')).forEach((botonEliminar, index)=>botonEliminar.onclick = eliminar(index)
         );
-        return;
+        return; 
     }
     listaVeterinarias.innerHTML = `<tr>
         <td colspan="5" class="lista-vacia">No hay veterinarias</td>
@@ -55,13 +55,12 @@ function enviarDatos(evento) {
     identificacion: identificacion.value
   };
   const accion = btnGuardar.innerHTML;
-  switch(accion) {
-    case 'Editar':
-      veterinarias[indice.value] = datos;
-      break;
-    default:
-      veterinarias.push(datos);
-      break;
+  let urlEnvio=url;
+  let method='POST';
+  if(accion==='Editar') {
+    veterinarias[indice.value] = datos;
+    urlEnvio+=`/${indice.value}`;
+    method='PUT';
   }
   listarVeterinarias();
   resetModal();
