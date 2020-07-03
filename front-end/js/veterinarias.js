@@ -62,6 +62,18 @@ function enviarDatos(evento) {
     urlEnvio+=`/${indice.value}`;
     method='PUT';
   }
+  const respuesta = await fetch(urlEnvio, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(datos),
+    mode: "cors",
+  });
+  if (respuesta.ok) {
+    listarMascotas();
+    resetModal();
+  }
   listarVeterinarias();
   resetModal();
 }
