@@ -19,7 +19,7 @@ async function listarDuenos() {
   if(duenos.length>0){
     const htmlDuenos = duenos.map((dueno, index)=>`<tr>
       <th scope="row">${index}</th>
-      <td>${dueno.identificacion}</td>
+      <td>${dueno.documento}</td>
       <td>${dueno.nombre}</td>
       <td>${dueno.apellido}</td>
       <td>
